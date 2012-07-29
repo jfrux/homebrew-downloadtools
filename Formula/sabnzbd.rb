@@ -1,9 +1,9 @@
 require 'formula'
 
 class Sabnzbd < Formula
-  url 'https://github.com/sabnzbd/sabnzbd/tarball/0.6.9'
+  url 'https://github.com/sabnzbd/sabnzbd/tarball/0.7.2'
   homepage 'http://sabnzbd.org/'
-  md5 '634112978dd3e7c22dfe927d02b99227'
+  md5 '61d55fd40e9249d8cfe63f1260542670'
 
   depends_on 'par2'
   depends_on 'unrar'
@@ -18,8 +18,8 @@ class Sabnzbd < Formula
     bin.mkpath
     (bin+"sabnzbd").write(startup_script)
     (etc+"sabnzbd").mkpath
-    (prefix+"org.sabnzbd.sabnzbd.plist").write(startup_plist)
-    (prefix+"org.sabnzbd.sabnzbd.plist").chmod 0644
+    (prefix+"homebrew.mxcl.sabnzbd.plist").write(startup_plist)
+    (prefix+"homebrew.mxcl.sabnzbd.plist").chmod 0644
   end
 
   def startup_plist; <<-EOS.undent
@@ -76,12 +76,12 @@ class Sabnzbd < Formula
     To launch automatically on startup, copy and paste the following into a terminal:
 
         mkdir -p ~/Library/LaunchAgents
-        (launchctl unload -w ~/Library/LaunchAgents/org.sabnzbd.sabnzbd.plist 2>/dev/null || true)
-        ln -sf #{prefix}/org.sabnzbd.sabnzbd.plist ~/Library/LaunchAgents/org.sabnzbd.sabnzbd.plist
-        launchctl load -w ~/Library/LaunchAgents/org.sabnzbd.sabnzbd.plist
+        (launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.sabnzbd.plist 2>/dev/null || true)
+        ln -sf #{prefix}/homebrew.mxcl.sabnzbd.plist ~/Library/LaunchAgents/homebrew.mxcl.sabnzbd.plist
+        launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.sabnzbd.plist
 
     You may want to edit:
-      #{prefix}/org.sabnzbd.sabnzbd.plist
+      #{prefix}/homebrew.mxcl.sabnzbd.plist
     to change the port (default: 8080) or user (default: #{`whoami`.chomp}).
     EOS
   end
