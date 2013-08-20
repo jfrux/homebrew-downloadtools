@@ -10,8 +10,8 @@ class Sabnzbd < Formula
   depends_on 'gettext'
 
   depends_on 'Cheetah' => :python
-  depends_on 'yenc' => :python
-  depends_on 'OpenSSL' => :python
+  #depends_on 'yenc' => :python
+  #depends_on 'OpenSSL' => :python
 
   def install
     prefix.install Dir['*']
